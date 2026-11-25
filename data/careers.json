@@ -1,0 +1,74 @@
+[
+  {
+    "nombre": "Tecnología en Desarrollo de Sistemas Informáticos",
+    "nivel": "Tecnológico",
+    "modalidad": null,
+    "snies": "105816",
+    "titulo": "Tecnólogo en Desarrollo de Sistemas Informáticos",
+    "descripcion": "Forma tecnólogos en desarrollo de software, bases de datos, redes y aplicaciones web.",
+    "url": "https://utap.edu.co/sitio/desarrollo-de-sistemas-informaticos/"
+  },
+  {
+    "nombre": "Tecnología en Producción Gráfica",
+    "nivel": "Tecnológico",
+    "modalidad": null,
+    "snies": "110954",
+    "titulo": "Tecnólogo en Producción Gráfica",
+    "descripcion": "Forma en la creación de piezas gráficas, producción digital y procesos creativos y publicitarios.",
+    "url": "https://utap.edu.co/sitio/produccion-grafica/"
+  },
+  {
+    "nombre": "Tecnología en Comercio Exterior y Negocios Internacionales",
+    "nivel": "Tecnológico",
+    "modalidad": null,
+    "snies": "11439",
+    "titulo": "Tecnólogo en Comercio Exterior y Negocios Internacionales",
+    "descripcion": "Prepara para gestionar importaciones y exportaciones según las normas nacionales e internacionales.",
+    "url": "https://utap.edu.co/sitio/comercio-exterior-y-negocios/"
+  },
+  {
+    "nombre": "Tecnología en Gestión Administrativa y Financiera",
+    "nivel": "Tecnológico",
+    "modalidad": "Presencial",
+    "snies": "116554",
+    "titulo": "Tecnólogo en Gestión Administrativa y Financiera",
+    "descripcion": "Forma en la gestión integral de empresas: finanzas, mercadeo y talento humano.",
+    "url": "https://utap.edu.co/sitio/gestion-administrativa-y-financiera/"
+  },
+  {
+    "nombre": "Tecnología en Gestión Administrativa y Financiera (Virtual)",
+    "nivel": "Tecnológico",
+    "modalidad": "Virtual",
+    "snies": "116553",
+    "titulo": "Tecnólogo en Gestión Administrativa y Financiera",
+    "descripcion": "Versión virtual del programa de Gestión Administrativa y Financiera.",
+    "url": "https://utap.edu.co/sitio/gestion-administrativa-y-financiera-virtual/"
+  },
+  {
+    "nombre": "Tecnología en Gestión Contable y Financiera",
+    "nivel": "Tecnológico",
+    "modalidad": null,
+    "snies": "109318",
+    "titulo": "Tecnólogo en Gestión Contable y Financiera",
+    "descripcion": "Forma para gestionar procesos contables y financieros bajo normas internacionales.",
+    "url": "https://utap.edu.co/sitio/gestion-contable-y-financiera/"
+  },
+  {
+    "nombre": "Tecnología en Gestión de la Seguridad y Salud en el Trabajo",
+    "nivel": "Tecnológico",
+    "modalidad": null,
+    "snies": "109344",
+    "titulo": "Tecnólogo en Gestión de la Seguridad y Salud en el Trabajo",
+    "descripcion": "Forma para prevenir riesgos laborales, aplicar la normativa de seguridad y salud y auditar su gestión en las empresas.",
+    "url": "https://utap.edu.co/sitio/gestion-en-seguridad-y-salud-en-el-trabajo/"
+  },
+  {
+    "nombre": "Tecnología en Producción Industrial",
+    "nivel": "Tecnológico",
+    "modalidad": null,
+    "snies": "026475",
+    "titulo": "Tecnólogo en Producción Industrial",
+    "descripcion": "Forma para planear, controlar y mejorar los procesos productivos y la cadena de suministro.",
+    "url": "https://utap.edu.co/sitio/produccion-industrial/"
+  }
+]
