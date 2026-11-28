@@ -2,12 +2,13 @@ const express = require("express");
 
 /**
  * Crea un router para manejar las rutas de las carreras de la UTAP.
+ * Si el repositorio lanza un error (por ejemplo 404), Express lo envía
+ * automáticamente al middleware errorHandler.
  * @param {Object} options - Opciones para configurar el router.
  * @param {Object} options.careerRepository - Repositorio que maneja las carreras en memoria.
- * @param {Function} options.handleError - Función para manejar errores.
  * @returns {Object} - Router configurado.
  */
-function createCareerRouter({ careerRepository, handleError }) {
+function createCareerRouter({ careerRepository }) {
   const router = express.Router();
 
   // GET /careers devuelve todas las carreras.
@@ -27,38 +28,22 @@ function createCareerRouter({ careerRepository, handleError }) {
 
   // El parámetro :id se obtiene desde req.params.id.
   router.get("/:id", (req, res) => {
-    try {
-      res.json(careerRepository.getById(req.params.id));
-    } catch (error) {
-      handleError(res, error);
-    }
+    res.json(careerRepository.getById(req.params.id));
   });
 
   // POST /careers crea una carrera. Recibe por body un objeto JSON con sus datos.
   router.post("/", (req, res) => {
-    try {
-      res.status(201).json(careerRepository.create(req.body));
-    } catch (error) {
-      handleError(res, error);
-    }
+    res.status(201).json(careerRepository.create(req.body));
   });
 
   // PUT /careers/:id reemplaza los datos de una carrera existente.
   router.put("/:id", (req, res) => {
-    try {
-      res.json(careerRepository.update(req.params.id, req.body));
-    } catch (error) {
-      handleError(res, error);
-    }
+    res.json(careerRepository.update(req.params.id, req.body));
   });
 
   // DELETE /careers/:id elimina una carrera y devuelve la que se eliminó.
   router.delete("/:id", (req, res) => {
-    try {
-      res.json(careerRepository.delete(req.params.id));
-    } catch (error) {
-      handleError(res, error);
-    }
+    res.json(careerRepository.delete(req.params.id));
   });
 
   return router;

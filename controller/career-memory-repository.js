@@ -1,9 +1,11 @@
 const initialCareers = require("../data/careers.json");
+const normalizeText = require("../utils/normalize-text.js");
 
 class CareerMemoryRepository {
   // Administra el CRUD de las carreras de la UTAP.
   // Al iniciar carga las carreras de data/careers.json en un Map en memoria:
   // los cambios (crear, editar, eliminar) se pierden al reiniciar el servidor.
+  // Los datos llegan ya validados por el middleware validateCareer.
   constructor(careers = initialCareers) {
     this.careers = new Map();
     this.nextId = 1;
@@ -32,24 +34,22 @@ class CareerMemoryRepository {
   // Busca las carreras cuyo nombre contenga el texto recibido.
   // No distingue mayúsculas ni tildes: "gestion" encuentra "Gestión".
   getByName(name) {
-    const search = this.normalize(name);
+    const search = normalizeText(name);
     return this.getAll().filter((career) =>
-      this.normalize(career.nombre).includes(search),
+      normalizeText(career.nombre).includes(search),
     );
   }
 
   // Filtra por nivel de formación, por ejemplo "tecnologico".
   getByLevel(level) {
-    const search = this.normalize(level);
+    const search = normalizeText(level);
     return this.getAll().filter(
-      (career) => this.normalize(career.nivel) === search,
+      (career) => normalizeText(career.nivel) === search,
     );
   }
 
-  // Valida los datos, asigna un ID y guarda la carrera.
+  // Asigna un ID y guarda la carrera.
   create(careerData) {
-    this.validateCareer(careerData);
-
     const career = {
       ...careerData,
       id: this.nextId,
@@ -62,8 +62,6 @@ class CareerMemoryRepository {
 
   // PUT reemplaza los datos de la carrera existente, conservando su ID.
   update(id, careerData) {
-    this.validateCareer(careerData);
-
     const numericId = Number(id);
     if (!this.careers.has(numericId)) {
       throw this.notFoundError(id);
@@ -88,35 +86,6 @@ class CareerMemoryRepository {
 
     this.careers.delete(numericId);
     return career;
-  }
-
-  // Rechaza datos inválidos antes de modificar el almacenamiento.
-  // Una carrera debe tener por lo menos "nombre" y "nivel".
-  validateCareer(careerData) {
-    if (
-      !careerData ||
-      typeof careerData !== "object" ||
-      Array.isArray(careerData) ||
-      typeof careerData.nombre !== "string" ||
-      careerData.nombre.trim() === "" ||
-      typeof careerData.nivel !== "string" ||
-      careerData.nivel.trim() === ""
-    ) {
-      const error = new Error(
-        "La carrera debe tener un nombre y un nivel que no estén vacíos",
-      );
-      error.status = 400;
-      throw error;
-    }
-  }
-
-  // Pasa el texto a minúsculas y le quita las tildes para comparar.
-  normalize(text) {
-    return String(text)
-      .normalize("NFD")
-      .replace(/[̀-ͯ]/g, "")
-      .toLowerCase()
-      .trim();
   }
 
   notFoundError(id) {
